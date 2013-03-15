@@ -1,13 +1,13 @@
 package com.handyedit.ant.run;
 
+import javax.swing.*;
+
 import com.handyedit.ant.util.AntUtil;
 import com.handyedit.ant.util.IdeaConfigUtil;
-import com.intellij.execution.LocatableConfigurationType;
-import com.intellij.execution.Location;
-import com.intellij.execution.RunManager;
-import com.intellij.execution.RunnerAndConfigurationSettings;
+import com.intellij.execution.*;
 import com.intellij.execution.configurations.ConfigurationFactory;
 import com.intellij.execution.configurations.RunConfiguration;
+import com.intellij.icons.AllIcons;
 import com.intellij.ide.highlighter.XmlFileType;
 import com.intellij.lang.ant.psi.AntTarget;
 import com.intellij.openapi.fileEditor.OpenFileDescriptor;
@@ -17,10 +17,7 @@ import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.util.Comparing;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiElement;
-import com.intellij.util.Icons;
 import org.jetbrains.annotations.NotNull;
-
-import javax.swing.*;
 
 /**
  * @author Alexei Orischenko
@@ -39,7 +36,7 @@ public class AntRunConfigurationType implements LocatableConfigurationType {
     }
 
     public Icon getIcon() {
-        return Icons.ANT_TARGET_ICON; // todo:
+        return AllIcons.Ant.Target; // todo:
     }
 
     @NotNull

@@ -1,9 +1,9 @@
 package com.handyedit.ant.xdebug.vars;
 
 import com.handyedit.ant.util.StringUtil;
+import com.intellij.icons.AllIcons;
 import com.intellij.xdebugger.frame.XValue;
 import com.intellij.xdebugger.frame.XValueNode;
-import com.intellij.xdebugger.ui.DebuggerIcons;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -24,7 +24,8 @@ public class AntVar extends XValue {
 
     @Override
     public void computePresentation(@NotNull XValueNode node) {
-        node.setPresentation(myName, DebuggerIcons.VALUE_ICON, "java.lang.String",
+      //Is this the same as import com.intellij.xdebugger.ui.DebuggerIcons.VALUE_ICON?
+        node.setPresentation(myName, AllIcons.Debugger.Value, "java.lang.String",
                 myValue != null ? StringUtil.quote(myValue) : "null", false);
     }
 }

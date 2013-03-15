@@ -1,13 +1,13 @@
 package com.handyedit.ant.run;
 
+import javax.swing.*;
+
 import com.intellij.execution.configurations.ConfigurationFactory;
 import com.intellij.execution.configurations.ConfigurationType;
 import com.intellij.execution.configurations.RunConfiguration;
+import com.intellij.icons.AllIcons;
 import com.intellij.openapi.project.Project;
-import com.intellij.util.Icons;
 import org.jetbrains.annotations.NotNull;
-
-import javax.swing.*;
 
 /**
  * @author Alexei Orischenko
@@ -31,7 +31,7 @@ public class AntRunConfigurationFactory extends ConfigurationFactory {
 
     @Override
     public Icon getIcon() {
-        return Icons.ANT_TARGET_ICON;
+        return AllIcons.Ant.Target;
     }
 
     

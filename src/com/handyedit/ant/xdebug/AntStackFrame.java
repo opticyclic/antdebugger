@@ -2,6 +2,7 @@ package com.handyedit.ant.xdebug;
 
 import com.handyedit.ant.breakpoint.AntDebuggerProxy;
 import com.handyedit.ant.breakpoint.AntFrame;
+import com.intellij.icons.AllIcons;
 import com.intellij.openapi.project.Project;
 import com.intellij.ui.SimpleColoredComponent;
 import com.intellij.ui.SimpleTextAttributes;
@@ -9,7 +10,6 @@ import com.intellij.xdebugger.XSourcePosition;
 import com.intellij.xdebugger.evaluation.XDebuggerEvaluator;
 import com.intellij.xdebugger.frame.XCompositeNode;
 import com.intellij.xdebugger.frame.XStackFrame;
-import com.intellij.xdebugger.ui.DebuggerIcons;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -63,7 +63,7 @@ public class AntStackFrame extends XStackFrame {
             appendText(component, position.getFile().getName());
             appendText(component, ":");
             appendText(component, Integer.toString(position.getLine() + 1));
-            component.setIcon(DebuggerIcons.STACK_FRAME_ICON);
+            component.setIcon(AllIcons.Debugger.StackFrame);
         } else {
             component.append("Stack frame not available", SimpleTextAttributes.REGULAR_ATTRIBUTES);
         }
