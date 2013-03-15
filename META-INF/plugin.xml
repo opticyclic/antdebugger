@@ -1,0 +1,164 @@
+<idea-plugin version="2" url="http://handyedit.com/antdebugger.html">
+  <depends>AntSupport</depends>
+  <depends>com.intellij.modules.java</depends>
+  <name>Ant Debugger</name>
+    <id>com.handyedit.AntDebugger</id>
+  <description><![CDATA[
+  Ant Debugger enables Apache Ant build script debugging:
+  <ul>
+  <li>Open build file in editor</li>
+  <li>Set debug breakpoints (screenshot 1)</li>
+  <li>Right click on editor to show context menu (screenshot 2) and
+  select the "Debug" menu item to launch Ant debugger</li>
+  <li>Wait until the Ant debugger stops on breakpoint then 
+  use step or resume debugger commands, investigate Ant variables and execution stack (screenshot 3)</li>
+  </ul>
+
+  <p>
+  You can add Ant debug configuration from the Edit configurations dialog (screenshot 4).
+  Then you select Ant file, Java SDK for debugging session (screenshot 5).
+  </p>
+
+  <p><b>Note.</b> Plugin requires Java SDK to launch Ant: plugin uses build file module, project or any SDK for JDK list 
+  (the plugin searches for Java SDK in this order and uses first found).</p>
+
+  <p><b>Installation:</b> use Idea plugins manager:<ul>
+  <li>open Settings > plugins</li>
+  <li>wait until the plugin list loads</li>
+  <li>right click on Ant Debugger plugin and select install / update from the context menu</li>
+  <li>restart Idea</li>
+  </ul>
+  </p>
+
+  <p><b>Supported Idea versions:</b> Idea 8.1.x, Idea 9 (community and ultimate editions).
+
+  <p>Please write to <strong>antdebugger at handyedit.com</strong> if there are errors / problems when using Ant debugger</p>
+  ]]></description>
+  <version>1.1.6</version>
+  <change-notes><![CDATA[
+    <p>1.1.6
+    <ul>
+        <li>Run setting: logging level (default, quiet, verbose, debug).</li>
+        <li>Launch targets from context menu fix</li>
+    </ul>
+    </p>
+
+    <p>1.1.5
+    <ul>
+        <li>Show pathes in Ant variables (also avaliable in the Evaluate dialog by Alt-F8). The variable name is path element ID.</li>
+        <li>Don't stop on property tasks when stepping only if the task is outside the current target</li>
+    </ul>
+    </p>
+
+    <p>1.1.4
+    <ul>
+        <li>Breakpoints fix for tasks with multiline empty tag</li>
+        <li>Don't stop on patternset, path, tstamp tasks when stepping</li>
+    </ul>
+    </p>
+
+    <p>1.1.3
+    <ul>
+        <li>Create configuration from context menu: 'make' is disabled</li>
+        <li>Don't stop on property, typedef, taskdef tasks when stepping</li>
+        <li>Breakpoints fix for tasks with multiline open tag</li>
+    </ul>
+    </p>
+
+    <p>1.1.2
+    <ul>
+        <li>Step in / over / out support</li>
+        <li>Run to cursor fixes</li>
+    </ul>
+    </p>
+
+    <p>1.1.1
+    <ul>
+        <li>Run configuration fix: create configuration</li>
+    </ul>
+    </p>
+
+    <p>1.1
+    <ul>
+        <li>Variable value tooltip, expression evaluation (Alt-F8)</li>
+        <li>Run configuration: show targets from imported files</li>
+        <li>Run configuration fix: reload targets list on build file change</li>
+    </ul>
+    </p>
+
+    <p>1.0.8
+    <ul>
+        <li>Set breakpoint fix for Windows</li>
+        <li>Run configuration fix: create configuration in project without JDK</li>
+        <li>Fix: determine that Ant process terminated on debugger connect</li>
+    </ul>
+    </p>
+
+    <p>1.0.7
+    <ul>
+        <li>Run configuration: build target selection</li>
+        <li>Can debug target right clicking on it</li>
+        <li>Run configuration: VM parameters</li>
+    </ul>
+    </p>
+
+    <p>1.0.6
+    <ul>
+        <li>Fix: projects with JDK 1.5</li>
+        <li>Fix: step into macro-def</li>
+        <li>Multiple files support fixes</li>
+    </ul>
+    </p>
+
+    <p>1.0.5
+    <ul>
+        <li>Ant launch fix for Windows: quotes</li>
+    </ul>
+    </p>
+
+    <p>1.0.4
+    <ul>
+        <li>Ant launch fix for Windows</li>
+    </ul>
+    </p>
+
+    <p>1.0.3
+    <ul>
+        <li>Fix for Windows: removed Java path checking</li>
+        <li>Ant launch fix for Windows</li>
+    </ul>
+    </p>
+
+    <p>1.0.2
+    <ul>
+        <li>Configuration: custom Ant tasks folder</li>
+        <li>Fix: don't block Ant build if Idea hasn't connected to it (timeout in build listener)</li>
+        <li>More feedback for connect error</li>
+    </ul>
+    </p>
+
+    <p>1.0.1
+    <ul>
+        <li>Multiple XML files support</li>
+        <li>UI enhancements</li>
+    </ul>
+    </p>
+  ]]></change-notes>
+  <vendor email="antdebugger@handyedit.com" url="http://handyedit.com/">Alexei Orischenko</vendor>
+  <idea-version since-build="93.13"/>
+
+    <application-components>
+    </application-components>
+
+    <actions>
+    </actions>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <configurationType implementation="com.handyedit.ant.run.AntRunConfigurationType"/>
+
+    <xdebugger.breakpointType implementation="com.handyedit.ant.xdebug.AntLineBreakpointType"/>
+
+    <programRunner implementation="com.handyedit.ant.breakpoint.AntDebugRunner"/>
+
+  </extensions>
+</idea-plugin>

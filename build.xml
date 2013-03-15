@@ -1,0 +1,27 @@
+<project basedir="." default="dist">
+
+    <property name="idea.dir" value="/java/idea-IU-94.273"/>
+
+	<target name="dist">
+        <delete dir="build"/>
+        <mkdir dir="build"/>
+        <mkdir dir="build/classes"/>
+
+		<javac srcdir="src" destdir="build/classes" target="1.5">
+            <classpath>
+                <fileset dir="${idea.dir}/lib">
+                    <include name="*.jar"/>
+                </fileset>
+            </classpath>
+        </javac>
+
+        <jar destfile="build/ant-debugger.jar">
+            <fileset dir="build/classes">
+                <include name="**/*"/>
+            </fileset>
+            <fileset dir=".">
+                <include name="META-INF/*"/>
+            </fileset>
+        </jar>
+	</target>
+</project>
