@@ -1,5 +1,8 @@
 package com.handyedit.ant.run;
 
+import java.io.File;
+import java.util.*;
+
 import com.handyedit.ant.util.FileUtil;
 import com.handyedit.ant.util.XmlUtil;
 import com.intellij.execution.ExecutionException;
@@ -11,10 +14,7 @@ import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleManager;
 import com.intellij.openapi.options.SettingsEditor;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.projectRoots.JavaSdkType;
-import com.intellij.openapi.projectRoots.ProjectJdkTable;
-import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.projectRoots.SdkType;
+import com.intellij.openapi.projectRoots.*;
 import com.intellij.openapi.roots.OrderRootType;
 import com.intellij.openapi.util.InvalidDataException;
 import com.intellij.openapi.util.WriteExternalException;
@@ -22,12 +22,6 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.PathUtil;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * @author Alexei Orischenko
@@ -167,8 +161,8 @@ public class AntRunConfiguration extends ModuleBasedConfiguration<RunConfigurati
 
     private static JavaSdkType getJavaSdk(Sdk sdk) {
         if (sdk != null) {
-            SdkType sdkType = sdk.getSdkType();
-            if (sdkType != null && sdkType instanceof JavaSdkType) {
+          SdkTypeId sdkType = sdk.getSdkType();
+            if (sdkType instanceof JavaSdkType) {
                 return (JavaSdkType) sdkType;
             }
         }
