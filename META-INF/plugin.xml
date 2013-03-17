@@ -1,8 +1,10 @@
 <idea-plugin version="2" url="https://github.com/opticyclic/antdebugger/">
   <depends>AntSupport</depends>
   <depends>com.intellij.modules.java</depends>
-  <name>Ant Debugger</name>
-    <id>com.handyedit.AntDebugger</id>
+  <name>Ant Debugger v1.2.0</name>
+  <!--Added the extra ant package so that the plugin repo will accept this as a different plugin-->
+  <id>com.handyedit.ant.AntDebugger</id>
+
   <description><![CDATA[
   Ant Debugger enables Apache Ant build script debugging:
   <ul>
