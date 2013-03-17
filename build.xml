@@ -1,27 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
 <project basedir="." default="dist">
 
-    <property name="idea.dir" value="/java/idea-IU-94.273"/>
+    <!--TODO: Find a more generic/conventional way to define the IDEA classpath-->
+    <property name="idea.home" value="C:/Program Files (x86)/JetBrains/IntelliJ IDEA 12.0"/>
 
-	<target name="dist">
-        <delete dir="build"/>
-        <mkdir dir="build"/>
-        <mkdir dir="build/classes"/>
+    <property name="src.dir" value="src"/>
+    <property name="build.dir" value="build"/>
+    <property name="build.classes.dir" value="${build.dir}/classes"/>
 
-		<javac srcdir="src" destdir="build/classes" target="1.5">
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <target name="init">
+        <delete dir="${build.dir}"/>
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${build.classes.dir}"/>
+    </target>
+
+    <target name="compile" depends="init">
+        <javac srcdir="${src.dir}" destdir="${build.classes.dir}" target="1.5">
             <classpath>
-                <fileset dir="${idea.dir}/lib">
+                <fileset dir="${idea.home}/lib">
                     <include name="*.jar"/>
                 </fileset>
             </classpath>
         </javac>
+    </target>
 
-        <jar destfile="build/ant-debugger.jar">
-            <fileset dir="build/classes">
+    <target name="jar" depends="compile">
+        <jar destfile="${build.dir}/ant-debugger.jar">
+            <fileset dir="${build.classes.dir}">
                 <include name="**/*"/>
             </fileset>
             <fileset dir=".">
                 <include name="META-INF/*"/>
             </fileset>
         </jar>
-	</target>
+    </target>
+
+    <target name="zip-src">
+        <zip destfile="${build.dir}/ant-debugger-src.zip">
+            <fileset dir=".">
+                <include name="**/*"/>
+                <exclude name="build/"/>
+                <exclude name="out/"/>
+                <exclude name=".idea/workspace.xml"/>
+            </fileset>
+        </zip>
+    </target>
+
+    <target name="dist" depends="jar,zip-src"/>
+
 </project>
