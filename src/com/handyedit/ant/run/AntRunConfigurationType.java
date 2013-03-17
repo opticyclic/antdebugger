@@ -9,7 +9,6 @@ import com.intellij.execution.configurations.ConfigurationFactory;
 import com.intellij.execution.configurations.RunConfiguration;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.highlighter.XmlFileType;
-import com.intellij.lang.ant.psi.AntTarget;
 import com.intellij.openapi.fileEditor.OpenFileDescriptor;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleUtil;
@@ -17,6 +16,9 @@ import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.util.Comparing;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiElement;
+import com.intellij.psi.xml.XmlAttribute;
+import com.intellij.psi.xml.XmlTag;
+import com.intellij.psi.xml.XmlText;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -101,11 +103,15 @@ public class AntRunConfigurationType implements LocatableConfigurationType {
 
         PsiElement elem = location.getPsiElement();
         while (elem != null) {
-          if (elem instanceof AntTarget) {
-              AntTarget target = (AntTarget) elem;
-              return target.getName();
-          }
-          elem = elem.getParent();
+              //TODO: This compiles but doesn't always return the right value
+              if (elem instanceof XmlText) {
+                  XmlText target = (XmlText) elem;
+
+                  XmlTag parentTag = target.getParentTag();
+                  XmlAttribute targetName = parentTag.getAttribute("name");
+                  return targetName.getDisplayValue();
+              }
+              elem = elem.getParent();
         }
         return null;
     }
