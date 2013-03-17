@@ -1,7 +1,6 @@
 package com.handyedit.ant.util;
 
 import com.intellij.compiler.options.CompileStepBeforeRun;
-import com.intellij.execution.BeforeRunTask;
 import com.intellij.execution.RunManagerEx;
 import com.intellij.execution.configurations.RunConfiguration;
 import com.intellij.openapi.project.Project;
@@ -16,6 +15,7 @@ import com.intellij.psi.xml.XmlTag;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -86,8 +86,8 @@ public class AntUtil {
 
     public static void disableCompileBeforeRun(RunConfiguration config) {
         RunManagerEx manager = RunManagerEx.getInstanceEx(config.getProject());
-        BeforeRunTask beforeRunTask = manager.getBeforeRunTask(config, CompileStepBeforeRun.ID);
-        if (beforeRunTask != null) {
+        List<CompileStepBeforeRun.MakeBeforeRunTask> tasks = manager.getBeforeRunTasks(config, CompileStepBeforeRun.ID);
+        for (CompileStepBeforeRun.MakeBeforeRunTask beforeRunTask : tasks) {
             beforeRunTask.setEnabled(false);
         }
     }
