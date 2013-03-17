@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<project basedir="." default="dist">
+<project name="ant-debugger" basedir="." default="dist">
 
     <!--TODO: Find a more generic/conventional way to define the IDEA classpath-->
     <property name="idea.home" value="C:/Program Files (x86)/JetBrains/IntelliJ IDEA 12.0"/>
+
+    <property name="build.version" value="1.2.0"/>
+
+    <tstamp>
+       <format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss" />
+     </tstamp>
 
     <property name="src.dir" value="src"/>
     <property name="build.dir" value="build"/>
@@ -29,7 +35,12 @@
     </target>
 
     <target name="jar" depends="compile">
-        <jar destfile="${build.dir}/ant-debugger.jar">
+        <jar destfile="${build.dir}/${ant.project.name}-${build.version}.jar">
+             <manifest>
+               <attribute name="Implementation-Title" value="${ant.project.name}"/>
+               <attribute name="Implementation-Version" value="${build.version}"/>
+               <attribute name="Build-Date" value="${TODAY}"/>
+             </manifest>
             <fileset dir="${build.classes.dir}">
                 <include name="**/*"/>
             </fileset>
@@ -40,7 +51,7 @@
     </target>
 
     <target name="zip-src">
-        <zip destfile="${build.dir}/ant-debugger-src.zip">
+        <zip destfile="${build.dir}/${ant.project.name}-src-${build.version}.zip">
             <fileset dir=".">
                 <include name="**/*"/>
                 <exclude name="build/"/>
