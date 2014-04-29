@@ -1,5 +1,5 @@
 <idea-plugin version="2" url="https://github.com/opticyclic/antdebugger/">
-  <depends>AntSupport</depends>
+  <depends optional="false">AntSupport</depends>
   <depends>com.intellij.modules.java</depends>
   <name>Ant Debugger v1.2.0</name>
   <!--Added the extra ant package so that the plugin repo will accept this as a different plugin-->
