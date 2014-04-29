@@ -17,6 +17,7 @@ import com.intellij.psi.xml.XmlFile;
 import com.intellij.psi.xml.XmlTag;
 import com.intellij.xdebugger.XSourcePosition;
 import com.intellij.xdebugger.frame.XValue;
+import com.intellij.xdebugger.frame.XValueChildrenList;
 import com.intellij.xdebugger.impl.XDebuggerUtilImpl;
 import org.apache.commons.lang.StringUtils;
 
@@ -285,11 +286,11 @@ public class AntDebuggerProxy {
         return value;
     }
 
-    public List<XValue> getVars() {
+    public XValueChildrenList getVars() {
         List<String> names = new ArrayList<String>(myVars.keySet());
         Collections.sort(names);
 
-        List<XValue> result = new ArrayList<XValue>();
+        XValueChildrenList result = new XValueChildrenList();
 
         for (String key: names) {
             result.add(new AntVar(key, myVars.get(key)));

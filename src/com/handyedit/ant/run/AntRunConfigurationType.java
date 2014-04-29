@@ -6,6 +6,7 @@ import com.handyedit.ant.util.AntUtil;
 import com.handyedit.ant.util.IdeaConfigUtil;
 import com.intellij.execution.*;
 import com.intellij.execution.configurations.ConfigurationFactory;
+import com.intellij.execution.configurations.ConfigurationType;
 import com.intellij.execution.configurations.RunConfiguration;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.highlighter.XmlFileType;
@@ -19,13 +20,14 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.xml.XmlAttribute;
 import com.intellij.psi.xml.XmlTag;
 import com.intellij.psi.xml.XmlText;
+import icons.AntIcons;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Alexei Orischenko
  *         Date: Nov 4, 2009
  */
-public class AntRunConfigurationType implements LocatableConfigurationType {
+public class AntRunConfigurationType implements ConfigurationType {
 
     private ConfigurationFactory myFactory;
 
@@ -38,12 +40,12 @@ public class AntRunConfigurationType implements LocatableConfigurationType {
     }
 
     public Icon getIcon() {
-        return AllIcons.Ant.Target; // todo:
+        return AntIcons.Target;
     }
 
     @NotNull
     public String getId() {
-        return "HandyEdit.AntRun";
+        return "HandyEdit.Ant.AntRun";
     }
 
     public ConfigurationFactory[] getConfigurationFactories() {

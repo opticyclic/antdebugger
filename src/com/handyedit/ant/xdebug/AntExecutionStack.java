@@ -48,8 +48,6 @@ public class AntExecutionStack extends XExecutionStack {
     public void computeStackFrames(final int frameCount, final XStackFrameContainer container) {
         if (frameCount <= myFrames.size()) {
             container.addStackFrames(myFrames.subList(frameCount, myFrames.size()), true);
-        } else {
-            container.errorOccured("No stack frames");
         }
     }
 }

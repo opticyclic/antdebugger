@@ -1,6 +1,7 @@
 package com.handyedit.ant.breakpoint;
 
 import com.handyedit.ant.run.AntProcessFactory;
+import com.handyedit.ant.run.AntRunCommandLineState;
 import com.handyedit.ant.run.AntRunConfiguration;
 import com.handyedit.ant.xdebug.AntDebugProcess;
 import com.intellij.execution.ExecutionException;
@@ -19,6 +20,7 @@ import com.intellij.xdebugger.XDebugProcessStarter;
 import com.intellij.xdebugger.XDebugSession;
 import com.intellij.xdebugger.XDebuggerManager;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Alexei Orischenko
@@ -41,13 +43,13 @@ public class AntDebugRunner extends GenericProgramRunner {
 
     }
 
-    protected RunContentDescriptor doExecute(
-            Project project, Executor executor,
-            final RunProfileState state, RunContentDescriptor contentToReuse, ExecutionEnvironment env) throws ExecutionException {
-
+    @Nullable
+    @Override
+    protected RunContentDescriptor doExecute(@NotNull Project project, @NotNull final RunProfileState state, @Nullable RunContentDescriptor contentToReuse, @NotNull ExecutionEnvironment environment) throws ExecutionException {
         FileDocumentManager.getInstance().saveAllDocuments();
 
-        AntRunConfiguration runConfig = (AntRunConfiguration) state.getRunnerSettings().getRunProfile();
+        AntRunCommandLineState antRunCommandLineState = (AntRunCommandLineState) state;
+        AntRunConfiguration runConfig = (AntRunConfiguration) antRunCommandLineState.getEnvironment().getRunProfile();
         int debugPort = runConfig.getDebugPort();
         final OSProcessHandler serverProcessHandler = AntProcessFactory.getInstance(debugPort).createProcess(runConfig);
         if (serverProcessHandler == null) {
@@ -60,7 +62,7 @@ public class AntDebugRunner extends GenericProgramRunner {
         final AntDebuggerProxy debuggerProxy = new AntDebuggerProxy(project, debugPort);
 
         final XDebugSession session = XDebuggerManager.getInstance(project).
-                startSession(this, env, contentToReuse, new XDebugProcessStarter() {
+                startSession(this, environment, contentToReuse, new XDebugProcessStarter() {
                     @NotNull
                     public XDebugProcess start(@NotNull final XDebugSession session) {
                         return new AntDebugProcess(session, state, serverProcessHandler, debuggerProxy);

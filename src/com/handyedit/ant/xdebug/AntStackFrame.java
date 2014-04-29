@@ -54,7 +54,6 @@ public class AntStackFrame extends XStackFrame {
         return mySourcePosition;
     }
 
-    @Override
     public void customizePresentation(final SimpleColoredComponent component) {
         final XSourcePosition position = getSourcePosition();
         if (position != null) {

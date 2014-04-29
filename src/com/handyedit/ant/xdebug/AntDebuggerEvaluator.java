@@ -7,8 +7,10 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.PsiDocumentManager;
 import com.intellij.psi.PsiFile;
+import com.intellij.xdebugger.XSourcePosition;
 import com.intellij.xdebugger.evaluation.XDebuggerEvaluator;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Alexei Orischenko
@@ -23,12 +25,11 @@ public class AntDebuggerEvaluator extends XDebuggerEvaluator {
     }
 
     @Override
-    public void evaluate(@NotNull String s, XEvaluationCallback xEvaluationCallback) {
-        String value = myFrame.getDebuggerProxy().getVariableValue(s);
-        xEvaluationCallback.evaluated(new AntVar(s, value));
+    public void evaluate(@NotNull String expression, @NotNull XEvaluationCallback callback, @Nullable XSourcePosition expressionPosition) {
+        String value = myFrame.getDebuggerProxy().getVariableValue(expression);
+        callback.evaluated(new AntVar(expression, value));
     }
 
-    @Override
     public TextRange getExpressionRangeAtOffset(Project project, Document document, int i) {
         PsiFile file = PsiDocumentManager.getInstance(project).getPsiFile(document);
         if (file != null) {

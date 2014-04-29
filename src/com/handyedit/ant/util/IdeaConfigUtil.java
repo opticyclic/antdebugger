@@ -25,7 +25,7 @@ public class IdeaConfigUtil {
             }
         }
 
-        jdk = ProjectRootManager.getInstance(project).getProjectJdk();
+        jdk = ProjectRootManager.getInstance(project).getProjectSdk();
         if (jdk != null && jdk.getSdkType() instanceof JavaSdkType) {
             return jdk;
         }

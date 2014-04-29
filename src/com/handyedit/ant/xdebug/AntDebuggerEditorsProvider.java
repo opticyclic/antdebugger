@@ -6,6 +6,7 @@ import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.*;
 import com.intellij.xdebugger.XSourcePosition;
+import com.intellij.xdebugger.evaluation.EvaluationMode;
 import com.intellij.xdebugger.evaluation.XDebuggerEditorsProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -24,8 +25,8 @@ public class AntDebuggerEditorsProvider extends XDebuggerEditorsProvider {
 
     @NotNull
     @Override
-    public Document createDocument(@NotNull Project project, @NotNull String s, @Nullable XSourcePosition xSourcePosition) {
-        PsiFile psiFile = new AntExpressionCodeFragmentImpl(project, "AntDebugger.expr", s);
+    public Document createDocument(@NotNull Project project, @NotNull String text, @Nullable XSourcePosition sourcePosition, @NotNull EvaluationMode mode) {
+        PsiFile psiFile = new AntExpressionCodeFragmentImpl(project, "AntDebugger.expr", text);
         return PsiDocumentManager.getInstance(project).getDocument(psiFile);
     }
 }
