@@ -1,6 +1,7 @@
 package com.handyedit.ant.run;
 
 import com.handyedit.ant.util.AntUtil;
+import com.handyedit.ant.util.IdeaConfigUtil;
 import com.intellij.execution.Location;
 import com.intellij.execution.actions.ConfigurationContext;
 import com.intellij.execution.actions.ConfigurationFromContext;
@@ -23,15 +24,12 @@ public class AntRunConfigurationProducer extends RunConfigurationProducer<AntRun
         Location location = context.getLocation();
         PsiElement psiLocation = context.getPsiLocation();
 
-        AntDomElement antDomElement = (AntDomElement) AntDomReferenceBase.toDomElement(psiLocation);
-        AntDomProject antDomProject = antDomElement.getAntProject();
-
         String target = AntUtil.getTarget(psiLocation);
 
         configuration.setName(target);
         configuration.setTargetName(target);
         configuration.setBuildFile(location.getVirtualFile());
-        Sdk targetJdk = antDomProject.getTargetJdk();
+        Sdk targetJdk = IdeaConfigUtil.getJdk(location.getModule(), location.getProject());
         if (targetJdk != null) {
             configuration.setJdkName(targetJdk.getName());
         }
