@@ -2,7 +2,8 @@
   <depends optional="false">AntSupport</depends>
   <!--TODO: Can we remove dependency on Java so it can be used in other IDEA products?-->
   <depends>com.intellij.modules.java</depends>
-  <name>Ant Debugger v1.3.0</name>
+  <!--TODO: Rename it properly or add it into the IDEA Community source-->
+  <name>Ant Debugger v1.2.0</name>
   <!--Added the extra ant package so that the plugin repo will accept this as a different plugin-->
   <id>com.handyedit.ant.AntDebugger</id>
 
@@ -45,6 +46,7 @@
     <p>1.3.0
     <ul>
         <li>v1.2.0 never properly worked. Test that it actully works with IDEA v13</li>
+        <li>Name now doesn't reflect version :) </li>
     </ul>
     </p>
 
