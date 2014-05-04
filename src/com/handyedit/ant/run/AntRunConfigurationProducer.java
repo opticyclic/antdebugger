@@ -40,6 +40,12 @@ public class AntRunConfigurationProducer extends RunConfigurationProducer<AntRun
 
     @Override
     public boolean isConfigurationFromContext(AntRunConfiguration configuration, ConfigurationContext context) {
+        PsiElement psiLocation = context.getPsiLocation();
+        String target = AntUtil.getTarget(psiLocation);
+        String configurationTargetName = configuration.getTargetName();
+        if (target == null || configurationTargetName == null || !target.equals(configurationTargetName)) {
+            return false;
+        }
         return true;
     }
 
