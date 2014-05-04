@@ -45,7 +45,7 @@ public class AntRunConfigurationType implements ConfigurationType {
 
     @NotNull
     public String getId() {
-        return "HandyEdit.Ant.AntRun";
+        return "AntRunConfigurationType";
     }
 
     public ConfigurationFactory[] getConfigurationFactories() {
