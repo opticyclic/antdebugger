@@ -167,7 +167,8 @@
     </actions>
 
   <extensions defaultExtensionNs="com.intellij">
-    <configurationType implementation="com.handyedit.ant.run.AntRunConfigurationType"/>
+      <runConfigurationProducer implementation="com.handyedit.ant.run.AntRunConfigurationProducer"/>
+      <configurationType implementation="com.handyedit.ant.run.AntRunConfigurationType"/>
 
     <xdebugger.breakpointType implementation="com.handyedit.ant.xdebug.AntLineBreakpointType"/>
 
