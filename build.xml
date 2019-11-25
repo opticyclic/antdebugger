@@ -10,7 +10,7 @@
         <format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss"/>
     </tstamp>
 
-    <property name="src.dir" value="src"/>
+    <property name="src.dir" value="src/main/java"/>
     <property name="build.dir" value="build"/>
     <property name="build.classes.dir" value="${build.dir}/classes"/>
 
