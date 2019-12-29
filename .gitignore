@@ -1,3 +1,39 @@
+# Build files
+build/
+out/
+logs/
+
+# IDEA project files
+*.iml
+.idea/ant.xml
+.idea/compiler.xml
+.idea/gradle.xml
+.idea/jarRepositories.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/codeStyles/*
+.idea/copyright/*
+.idea/scopes/*
+
+.idea/libraries/
+
+# User-specific stuff
+.idea/tasks.xml
 .idea/workspace.xml
-out
-build
+.idea/dictionaries
+.idea/shelf/
+
+# Sensitive or high-churn files
+.idea/dataSources.ids
+.idea/dataSources.xml
+.idea/sqlDataSources.xml
+.idea/uiDesigner.xml
+
+# Plugins
+atlassian-ide-plugin.xml
+.idea/markdown-navigator/
+.idea/markdown-navigator.xml
+.idea/markdown-exported-files.xml
+
+# Gradle caches
+.gradle
