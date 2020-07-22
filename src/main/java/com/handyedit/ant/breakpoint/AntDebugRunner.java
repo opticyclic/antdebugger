@@ -62,7 +62,7 @@ public class AntDebugRunner extends GenericProgramRunner {
         final AntDebuggerProxy debuggerProxy = new AntDebuggerProxy(project, debugPort);
 
         final XDebugSession session = XDebuggerManager.getInstance(project).
-                startSession(this, environment, contentToReuse, new XDebugProcessStarter() {
+                startSession( environment, new XDebugProcessStarter() {
                     @NotNull
                     public XDebugProcess start(@NotNull final XDebugSession session) {
                         return new AntDebugProcess(session, state, serverProcessHandler, debuggerProxy);

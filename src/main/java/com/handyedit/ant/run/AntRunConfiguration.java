@@ -27,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
  * @author Alexei Orischenko
  *         Date: Nov 4, 2009
  */
-public class AntRunConfiguration extends ModuleBasedConfiguration<RunConfigurationModule> { // todo: store config between runs
+public class AntRunConfiguration extends ModuleBasedConfiguration<RunConfigurationModule, Element> { // todo: store config between runs
 
     private static final String DEFAULT_BUILD_FILE = "build.xml";
     private static final int DEFAULT_DEBUG_PORT = 25000;
