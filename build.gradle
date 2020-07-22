@@ -6,10 +6,10 @@ plugins {
 apply plugin: 'org.jetbrains.intellij'
 
 group 'com.github.opticyclic'
-version '1.3.0'
+version '1.4.0-SNAPSHOT'
 
-sourceCompatibility = 1.5
-targetCompatibility = 1.5
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
@@ -21,8 +21,9 @@ dependencies {
 
 //See: https://github.com/JetBrains/gradle-intellij-plugin
 intellij {
-    localPath '/opt/idea-IC-135.1356'
-    // Plugin Dependencies:
-    // See: https://www.jetbrains.org/intellij/sdk/docs/basics/plugin_structure/plugin_dependencies.html
-    plugins = ['ant']
+    version = 2019.3
+    type = 'IC'
+    //Plugin Dependencies:
+    //https://www.jetbrains.org/intellij/sdk/docs/basics/plugin_structure/plugin_dependencies.html
+    plugins = ['java', 'ant']
 }

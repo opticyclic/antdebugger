@@ -41,7 +41,7 @@
   <p>See <a href="https://github.com/opticyclic/antdebugger/">https://github.com/opticyclic/antdebugger/</a> for v1.2.0+ and <a href="http://handyedit.com/antdebugger.html">http://handyedit.com/antdebugger.html</a> for earlier versions.</p>
 
   ]]></description>
-  <version>1.3.0</version>
+  <version>1.4.0-SNAPSHOT</version>
   <change-notes><![CDATA[
     <p>1.3.0
     <ul>
@@ -167,7 +167,7 @@
     </p>
   ]]></change-notes>
   <vendor email="opticyclic@gmail.com" url="https://github.com/opticyclic/antdebugger/">opticyclic</vendor>
-  <idea-version since-build="13.0"/>
+  <idea-version since-build="2019.3"/>
 
     <application-components>
     </application-components>
