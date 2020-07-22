@@ -25,19 +25,9 @@
   <p><b>Note.</b> Plugin requires Java SDK to launch Ant: plugin uses build file module, project or any SDK for JDK list 
   (the plugin searches for Java SDK in this order and uses first found).</p>
 
-  <p><b>Installation:</b> use IDEA plugins manager:<ul>
-  <li>Open Settings > plugins</li>
-  <li>Wait until the plugin list loads</li>
-  <li>Right-click on Ant Debugger plugin and select install / update from the context menu</li>
-  <li>Restart IDEA</li>
-  </ul>
-  </p>
+  <p>Please post an issue on <a href="https://github.com/opticyclic/antdebugger/issues">GitHub</a> if there are errors/problems when using Ant debugger</p>
 
-  <p><b>Supported IDEA versions:</b> IDEA 13.x (Community and Ultimate Editions).
-
-  <p>Please write to <a href="mailto:opticyclic@gmail.com?Subject=Ant%20Debugger">opticyclic@gmail.com</a> or post an issue on <a href="https://github.com/opticyclic/antdebugger/issues">GitHub</a> if there are errors / problems when using Ant debugger</p>
-
-  <p>See <a href="https://github.com/opticyclic/antdebugger/">https://github.com/opticyclic/antdebugger/</a> for v1.2.0+ and <a href="http://handyedit.com/antdebugger.html">http://handyedit.com/antdebugger.html</a> for earlier versions.</p>
+  <p>See <a href="http://handyedit.com/antdebugger.html">http://handyedit.com/antdebugger.html</a> for 1.1.6 and earlier versions.</p>
 
   ]]></description>
 
