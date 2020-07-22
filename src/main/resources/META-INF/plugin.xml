@@ -42,6 +42,13 @@
   ]]></description>
 
   <change-notes><![CDATA[
+    <p>Upcoming
+    <ul>
+        <li>Support for versions newer than 2019/li>
+        <li>Add a plugin icon</li>
+    </ul>
+    </p>
+
     <p>1.3.0
     <ul>
         <li>v1.2.0 never properly worked. Test that it actully works with IDEA v13</li>
