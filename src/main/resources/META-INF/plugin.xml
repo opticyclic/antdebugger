@@ -2,7 +2,7 @@
   <!--Added the extra ant package so that the plugin repo will accept this as a different plugin-->
   <id>com.handyedit.ant.AntDebugger</id>
   <!--TODO: Rename it properly or add it into the IDEA Community source-->
-  <name>Ant Debugger v1.2.0</name>
+  <name>Ant Debugger</name>
   <version>1.4.0-SNAPSHOT</version>
   <vendor email="opticyclic@gmail.com" url="https://github.com/opticyclic/antdebugger/">opticyclic</vendor>
 
